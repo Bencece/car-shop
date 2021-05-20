@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'homepage', component: HomepageComponent},
   {path: 'cart', component: CartComponent},
   {path: 'login', component: LoginComponent},
+  {path: '', redirectTo: '/homepage', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 
