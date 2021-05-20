@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Bencece/car-shop#readme",
   "dependencies": {
+    "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "mongoose": "^5.12.10"
   }
