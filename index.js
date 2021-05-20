@@ -32,6 +32,8 @@ const tmp = new User({ name: "szaboz", password: "PRF2021"})
 tmp.save()
 */
 
+app.use(express.static("frontend/car-shop/dist/car-shop/", {root: __dirname}))
+
 app.get('/', function (req, res) {
   res.send('Hello World')
 })
