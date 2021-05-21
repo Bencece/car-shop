@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const app = express()
 const productSchema = require("./models/Product")
 const userSchema = require("./models/User")
+const bodyParser = require('body-parser')
+
+var cors = require('cors')
+app.use(cors())
+app.use(bodyParser.json())
 
 require('dotenv').config();
 
@@ -73,13 +78,19 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
-app.post('/login',
-  passport.authenticate('local'),
-  function(req, res) {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user.username);
-  });
+app.post('/login', (req, res) =>{
+    if(req.body.name) {
+        passport.authenticate('local', (err, user)=>{
+            if (err) return res.status(500).send(err);
+            req.login(user, (err)=>{
+                if (err) return res.status(500).send(err)
+                return res.status(200).send("Authenticated!")
+            })
+        })(req, res);
+    } else {
+        return res.status(400).send("Bad request")
+    }
+});
 
 app.use(express.static("frontend/car-shop/dist/car-shop/", {
     root: __dirname

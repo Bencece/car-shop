@@ -19,4 +19,18 @@ export class HomepageComponent implements OnInit {
     })
   }
 
+  addCart(tmp : Product){
+    alert(tmp.name+" hozzáadva akosárhoz!")
+    let cartAll = localStorage.getItem('cart');
+    if(cartAll){
+      var cart = JSON.parse(cartAll);
+      cart.push(tmp)
+      localStorage.setItem('cart', JSON.stringify(cart));
+    } else {
+      let cart = []
+      cart.push(tmp)
+      localStorage.setItem('cart', JSON.stringify(cart))
+    }
+  }
+
 }

@@ -1,1 +1,11 @@
 <p>cart works!</p>
+
+<table>
+    <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td><img [src]="product.image" alt="image"></td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.prize }}Ft</td>
+    </tr>
+</table>
+<p><strong>Fizetendő: {{ sum }}Ft</strong></p>

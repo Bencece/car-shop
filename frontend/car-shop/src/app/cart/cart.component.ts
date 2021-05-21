@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    this.sum = 0
+  }
+
+  products: Product[] = []
+  sum : number
 
   ngOnInit(): void {
+    var cart = localStorage.getItem("cart");
+    if(cart){
+      JSON.parse(cart).forEach((product: Product)=>{
+        this.products.push(product)
+        this.sum+=product.prize
+      })
+    }
   }
 
 }

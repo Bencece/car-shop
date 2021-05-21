@@ -6,5 +6,6 @@
         <td><img [src]="product.image" alt="image"></td>
         <td>{{ product.description }}</td>
         <td>{{ product.prize }}Ft</td>
+        <button (click)="addCart(product)">Kosárba</button>
     </tr>
 </table>
