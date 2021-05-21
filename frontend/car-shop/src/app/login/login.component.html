@@ -1,1 +1,5 @@
 <p>login works!</p>
+
+<input type="text" placeholder="Felhasználó név" name="name" [(ngModel)]="name">
+<input type="password" placeholder="Jelszó" name="password" [(ngModel)]="password">
+<button (click)="login()">Bejelentkezés</button>
